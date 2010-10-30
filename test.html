@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+	"http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+	<title>moomodel:test</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/mootools/1.3.0/mootools-yui-compressed.js" type="text/javascript" charset="utf-8"></script>
+	<script src="model.js" type="text/javascript" charset="utf-8"></script>
+	<script src="usage.js" type="text/javascript" charset="utf-8"></script>
+</head>
+<body>
+  <h1>People</h1>
+  
+  <ul id="people">
+    <li>Nobody here...</li>
+  </ul>
+  
+  <div id="person-form" style="background-color: #efefef; padding: 10px;">
+    <p><label for="first_name">First Name:</label><input type="text" name="first_name" value="" id="first_name" /></p>
+    <p><label for="last_name">First Name:</label><input type="text" name="last_name" value="" id="first_name" /></p>
+    <p>
+      <label for="is_male">Is a male?</label><input type="checkbox" name="is_male" value="" id="is_male" />
+      <label for="age">Age:</label><input type="text" name="age" value="" id="age" />
+    </p>
+    <input type="submit" onclick="my_view.createPersonFromForm($('person-form')); return false;" />
+  </div>
+</body>
+</html>
