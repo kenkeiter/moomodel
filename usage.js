@@ -1,6 +1,7 @@
 /* Set up local datastore, schema */
 
 var person_store = new LocalDatasource('people');
+//var person_store = new RESTfulDatasource('/people')
 
 var Person = new Model('person', person_store, {
   
@@ -26,8 +27,8 @@ var ViewController = new Class({
     return confirm('Are you sure you wish to delete ' + instance.getFullName() + '?'); 
   },
   
-  modelDidDelete: function(model, instance){
-    $('person-' + instance.id).dispose();
+  modelDidDelete: function(model, pk){
+    $('person-' + pk).dispose();
   },
   
   modelWillSave: function(model, instance){
@@ -44,24 +45,21 @@ var ViewController = new Class({
     update_button.inject(person.getElement('.menu'));
     person.inject($('people'));
     
+    console.log(Person.all());
+    
   },
   
   createPersonFromForm: function(el){
-    try{
-      var attrs = el.toJSON();
-      attrs.age = parseInt(attrs.age);
-      attrs.is_male = ('is_male' in attrs);
-      console.log(attrs);
-      return Person.create(attrs);
-    }catch(e){
-      console.log('Input validation error:', e);
-    }
+    var attrs = el.toJSON();
+    attrs.age = parseInt(attrs.age);
+    attrs.is_male = ('is_male' in attrs);
+    return Person.create(attrs);
   }
 
 });
 
 var my_view = new ViewController(); // create a new instance of our controller
-Person.setModelDelegate(my_view);   // set the Person model's delegate as the controller.
+Person.setDelegate(my_view);   // set the Person model's delegate as the controller.
 
 /* Add a random observer who has no business being in the crowd */
 

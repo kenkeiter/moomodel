@@ -1,3 +1,11 @@
+
+Model Delegate/Observer Events:
+  * modelValueDidUpdate
+  * modelWillUpdate, modelDidUpdate
+  * modelWillSave, modelDidSave
+  * modelWillDelete, modelDidDelete
+
+
 Set up a RESTful interface to the Person resource. Note that the person 
 datastore is given an endpoint (base url) upon which it will make its 
 requests. Then we create a new Model with the name 'person', that will use 
